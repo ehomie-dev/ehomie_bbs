@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[xiaoyu_wechat.plugin]]></item>
+	<item id="RevisionID"><![CDATA[64473]]></item>
+	<item id="SN"><![CDATA[2017011721JM5L2yRQYX]]></item>
+	<item id="RevisionDateline"><![CDATA[1462770002]]></item>
+	<item id="Data">
+		<item id="/xiaoyu_wechat.inc.php"><![CDATA[7b034e6f07ec790e752f6370fec82839]]></item>
+		<item id="/cert.php"><![CDATA[0ca234ccbc10b3a77f791747736539b4]]></item>
+		<item id="/install.php"><![CDATA[fabb8a7407f6148ca9f1ffb81e26a4a0]]></item>
+		<item id="/more.inc.php"><![CDATA[884954de0d3de28e954473b0dcb46e42]]></item>
+		<item id="/function/function_register.php"><![CDATA[6b2987d170e868c2be8459b5588455f5]]></item>
+		<item id="/login.inc.php"><![CDATA[68f1f31c47686ed8c56f9a91b77ec6be]]></item>
+		<item id="/discuz_plugin_xiaoyu_wechat_TC_BIG5.xml"><![CDATA[7ac91bcb0d5f1717650f6650ce8fd39d]]></item>
+		<item id="/module/module_login.php"><![CDATA[862fe32046351a2fab0e9d0c923192c9]]></item>
+		<item id="/check.inc.php"><![CDATA[66d2e9f5d0cd8ae43aa10adc50362636]]></item>
+		<item id="/uninstall.php"><![CDATA[6b74dfad29458f440c85b153db37a42b]]></item>
+		<item id="/images/wx_login.png"><![CDATA[ae4a8c5ed18f1ffb7ab5e90ad4f07275]]></item>
+		<item id="/xiaoyu_core.php"><![CDATA[35e3b01143f4291425a7430209b46c6a]]></item>
+		<item id="/check.php"><![CDATA[1b316dd1227ee74b68daaf27ffa9ca34]]></item>
+		<item id="/discuz_plugin_xiaoyu_wechat_SC_UTF8.xml"><![CDATA[715207aa2f56815e9fb7a6343595f713]]></item>
+		<item id="/discuz_plugin_xiaoyu_wechat_TC_UTF8.xml"><![CDATA[439168eda98d732f4d793b8ed751616a]]></item>
+		<item id="/api.php"><![CDATA[9cd1252839fc6cd498fe276e74132d0b]]></item>
+		<item id="/discuz_plugin_xiaoyu_wechat_SC_GBK.xml"><![CDATA[adbd9b0c809f52a806c129024586c072]]></item>
+		<item id="/table/table_xiaoyu_wechat_user.php"><![CDATA[30fa9c9484436b16c4f1fddf9ea8708f]]></item>
+		<item id="/table/table_xiaoyu_wechat_scan.php"><![CDATA[74467e8781adc30cc8f6d3b5d372c382]]></item>
+		<item id="/table/table_xiaoyu_wechat_token.php"><![CDATA[6cb1adfacf377f5a6bd984e5315fa124]]></item>
+		<item id="/guide.inc.php"><![CDATA[626958a4ce1b21b866a389085d9b1282]]></item>
+		<item id="/template/qrcode.php"><![CDATA[b520eae4e43efbfe45957b5e189d01b4]]></item>
+		<item id="/template/module.htm"><![CDATA[ba72a3b4602dbe1f7afcd422dace5c49]]></item>
+		<item id="/login.class.php"><![CDATA[633a4b3990649a6e696c18c573aa8dab]]></item>
+	</item>
+</root>

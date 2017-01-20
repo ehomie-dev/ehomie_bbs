@@ -1,0 +1,195 @@
+<!--{template common/header}-->
+
+<script type="text/javascript">var fid = parseInt('$_G[fid]'), tid = parseInt('$_G[tid]');</script>
+<!--{if $modmenu['thread'] || $modmenu['post']}-->
+	<script type="text/javascript" src="{$_G['setting']['jspath']}forum_moderate.js?{VERHASH}"></script>
+<!--{/if}-->
+
+<script type="text/javascript" src="{$_G['setting']['jspath']}forum_viewthread.js?{VERHASH}"></script>
+<script type="text/javascript">zoomstatus = parseInt($_G['setting']['zoomstatus']);var imagemaxwidth = '{$_G['setting']['imagemaxwidth']}';var aimgcount = new Array();</script>
+
+<style id="diy_style" type="text/css"></style>
+<!--[diy=diynavtop]--><div id="diynavtop" class="area"></div><!--[/diy]-->
+<div id="pt" class="bm cl">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a><em>&raquo;</em><a href="forum.php">{$_G[setting][navs][2][navname]}</a>$navigation <em>&rsaquo;</em> <a href="forum.php?mod=viewthread&tid=$_G[tid]">$_G[forum_thread][short_subject]</a>
+	</div>
+</div>
+
+<!--{hook/viewthread_top}-->
+<!--{ad/text/wp a_t}-->
+
+<style id="diy_style" type="text/css"></style>
+<div class="wp">
+	<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+
+<div id="ct" class="wp cl">
+  <table width="100%"><tr>
+  <!-- 左侧 -->
+  <td style="vertical-algin:top;padding-right:10px;">
+    <div class="bm">
+	  <!--主题标题-->
+      <div class="mwt-border-bottom" style="padding:20px 20px 10px;">
+      <h1 class="threadtitle">$_G[forum_thread][subject]</h1>
+	  <span class="xg1">
+		所在版块: {$_G[forum][name]}
+        {echo date("Y-m-d H:i",$_G[forum_thread][dateline]);}
+	    <!--{if $_G['forum_thread'][displayorder] == -2}-->({lang moderating})
+		<!--{elseif $_G['forum_thread'][displayorder] == -3}-->({lang have_ignored})
+		<!--{elseif $_G['forum_thread'][displayorder] == -4}-->({lang draft})
+		  <!--{if $post['first'] && $post['invisible'] == -3}-->
+		  <a class="psave" href="forum.php?mod=misc&action=pubsave&tid=$_G[tid]">{lang published}</a>
+		  <!--{/if}-->
+		<!--{/if}-->
+		<!--{if $_G['setting']['threadhidethreshold'] && $_G['forum_thread']['hidden'] >= $_G['setting']['threadhidethreshold']}-->
+		<!--{if $_G['forum_thread']['authorid'] == $_G['uid']}--><a class="psave" id="hiderecover" title="{lang hiderecover_tips}" href="forum.php?mod=misc&action=hiderecover&tid=$_G[tid]&formhash={FORMHASH}" onclick="showWindow(this.id, this.href, 'get', 0);">{lang hidden}</a><!--{else}-->({lang hidden})<!--{/if}-->
+		&nbsp;
+		<!--{/if}-->
+		<!--{if $_G['forum_thread']['recommendlevel']}-->
+		&nbsp;<img src="{IMGDIR}/recommend_$_G['forum_thread']['recommendlevel'].gif" alt="" title="{
+		lang thread_recommend} $_G['forum_thread'][recommends]" />
+		<!--{/if}-->
+		<!--{if $_G['forum_thread'][heatlevel]}-->
+		&nbsp;<img src="{IMGDIR}/hot_$_G['forum_thread'][heatlevel].gif" alt="" title="{lang heats}: 
+		$_G['forum_thread']['heats']" />
+		<!--{/if}-->
+		<!--{if $_G['forum_thread']['closed'] == 1}-->
+		&nbsp;<img src="{IMGDIR}/locked.gif" alt="{lang close}" title="{lang close}" class="vm" />
+		<!--{/if}-->
+		<a href="forum.php?mod=viewthread&tid=$_G[tid]$fromuid" onclick="return copyThreadUrl(this, '$_G[
+setting][bbname]')" {if $fromuid}title="{lang share_url_copy_comment}"{/if}>[{lang share_url_copy}]</a>
+	  </span>
+	  <!--{hook/viewthread_title_row}-->
+	  <!--{hook/viewthread_title_extra}-->
+      <span style="float:right">
+	    <span class="xg1" >{lang show}:</span> <span class="xi1">$_G[forum_thread][views]</span><span class="pipe">|</span><span class="xg1">{lang reply}:</span> <span class="xi1">$_G[forum_thread][allreplies]</span>
+	  </span>
+
+	  <!-- 管理工具条 -->
+	  <!--{if $modmenu['thread']}-->
+	  <div id="modmenu" class="xi2 pbm">
+		<!--{eval $modopt=0;}-->
+		<!--{if $_G['forum']['ismoderator']}-->
+			<!--{if $_G['group']['allowdelpost']}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modthreads(3, 'delete')">{lang modmenu_deletethread}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{if $_G['group']['allowbumpthread'] && !$_G['forum_thread']['is_archived']}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modthreads(3, 'bump')">{lang modmenu_updown}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{if $_G['group']['allowstickthread'] && ($_G['forum_thread']['displayorder'] <= 3 || $_G['adminid'] == 1) && !$_G['forum_thread']['is_archived']}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modthreads(1, 'stick')">{lang modmenu_stickthread}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{if $_G['group']['allowlivethread'] && !$_G['forum_thread']['is_archived']}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modaction('live')">{lang modmenu_live}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{if $_G['group']['allowhighlightthread'] && !$_G['forum_thread']['is_archived']}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modthreads(1, 'highlight')">{lang modmenu_highlight}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{if $_G['group']['allowdigestthread'] && !$_G['forum_thread']['is_archived']}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modthreads(1, 'digest')">{lang modmenu_digestpost}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{if $_G['group']['allowrecommendthread'] && !empty($_G['forum']['modrecommend']['open']) && $_G['forum']['modrecommend']['sort'] != 1 && !$_G['forum_thread']['is_archived']}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modthreads(1, 'recommend')">{lang modmenu_recommend}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{if $_G['group']['allowstampthread'] && !$_G['forum_thread']['is_archived']}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modaction('stamp')">{lang modmenu_stamp}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{if $_G['group']['allowstamplist'] && !$_G['forum_thread']['is_archived']}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modaction('stamplist')">{lang modmenu_icon}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{if $_G['group']['allowclosethread'] && !$_G['forum_thread']['is_archived'] && $_G['forum']['status'] != 3}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modthreads(4)"><!--{if !$_G['forum_thread']['closed']}-->{lang modmenu_switch_off}<!--{else}-->{lang modmenu_switch_on}<!--{/if}--></a><span class="pipe">|</span><!--{/if}-->
+			<!--{if $_G['group']['allowmovethread'] && !$_G['forum_thread']['is_archived'] && $_G['forum']['status'] != 3}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modthreads(2, 'move')">{lang modmenu_move}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{if $_G['group']['allowedittypethread'] && !$_G['forum_thread']['is_archived']}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modthreads(2, 'type')">{lang modmenu_type}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{if !$_G['forum_thread']['special'] && !$_G['forum_thread']['is_archived']}-->
+				<!--{if $_G['group']['allowcopythread'] && $_G['forum']['status'] != 3}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modaction('copy')">{lang modmenu_copy}</a><span class="pipe">|</span><!--{/if}-->
+				<!--{if $_G['group']['allowmergethread'] && $_G['forum']['status'] != 3}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modaction('merge')">{lang modmenu_merge}</a><span class="pipe">|</span><!--{/if}-->
+				<!--{if $_G['group']['allowrefund'] && $_G['forum_thread']['price'] > 0}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modaction('refund')">{lang modmenu_restore}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{/if}-->
+			<!--{if $_G['group']['allowsplitthread'] && !$_G['forum_thread']['is_archived'] && $_G['forum']['status'] != 3}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modaction('split')">{lang modmenu_split}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{if $_G['group']['allowrepairthread'] && !$_G['forum_thread']['is_archived']}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modaction('repair')">{lang modmenu_repair}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{if $_G['forum_thread']['is_archived'] && $_G['adminid'] == 1}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modaction('restore', '', 'archiveid={$_G[forum_thread][archiveid]}')">{lang modmenu_archive}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{if $_G['forum_firstpid']}-->
+				<!--{if $_G['group']['allowwarnpost']}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modaction('warn', '$_G[forum_firstpid]')">{lang modmenu_warn}</a><span class="pipe">|</span><!--{/if}-->
+				<!--{if $_G['group']['allowbanpost']}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modaction('banpost', '$_G[forum_firstpid]')">{lang modmenu_banthread}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{/if}-->
+			<!--{if $_G['group']['allowremovereward'] && $_G['forum_thread']['special'] == 3 && !$_G['forum_thread']['is_archived']}--><!--{eval $modopt++}--><a href="javascript:;" onclick="modaction('removereward')">{lang modmenu_removereward}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{if $_G['forum']['status'] == 3 && in_array($_G['adminid'], array('1','2')) && $_G['forum_thread']['closed'] < 1}--><a href="javascript:;" onclick="modthreads(5, 'recommend_group');return false;">{lang modmenu_grouprecommend}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{if $_G['group']['allowmanagetag']}--><a href="javascript:;" onclick="showWindow('mods', 'forum.php?mod=tag&op=manage&tid=$_G[tid]', 'get', 0)">{lang post_tag}</a><span class="pipe">|</span><!--{/if}-->
+			<!--{if $_G['group']['alloweditusertag']}--><a href="javascript:;" onclick="showWindow('usertag', 'forum.php?mod=misc&action=usertag&tid=$_G[tid]', 'get', 0)">{lang usertag}</a><span class="pipe">|</span><!--{/if}-->
+		<!--{/if}-->
+		<!--{if $allowpusharticle && $allowpostarticle}--><!--{eval $modopt++}--><a href="portal.php?mod=portalcp&ac=article&from_idtype=tid&from_id=$_G['tid']">{lang modmenu_pusharticle}</a><span class="pipe">|</span><!--{/if}-->
+		<!--{hook/viewthread_modoption}-->
+	</div>
+<!--{/if}-->
+	  </div><!--主题标题END-->
+
+	  <!-- 帖子列表 -->
+	  <!--{hook/viewthread_beginline}-->
+	  <!--{eval $postcount = 0;}-->
+      <!--{loop $postlist $post}-->
+        <!--{if $rushreply && $_GET['checkrush'] && $post['rewardfloor'] != 1}-->
+            <!--{eval continue;}-->
+        <!--{/if}-->
+        <div id="post_$post[pid]" {if $_G['blockedpids'] && $post['inblacklist']}style="display:none;"{/if} 
+			class="mwt-border-bottom" style="margin:10px 0;">
+            <!--{subtemplate forum/viewthread_node}-->
+        </div>
+        <!--{eval $postcount++;}-->
+      <!--{/loop}-->
+      <div id="postlistreply" class="pl"><div id="post_new" class="viewthread_table" style="display: block;"></div></div>
+      <!--{if $_G['blockedpids']}-->
+        <div id='hiddenpoststip'><a href='javascript:display_blocked_post();'>{lang other_reply_hide}</a></div>
+        <div id="hiddenposts"></div>
+      <!--{/if}-->
+
+	  <form method="post" autocomplete="off" name="modactions" id="modactions">
+	    <input type="hidden" name="formhash" value="{FORMHASH}" />
+		<input type="hidden" name="optgroup" />
+		<input type="hidden" name="operation" />
+		<input type="hidden" name="listextra" value="$_GET[extra]" />
+		<input type="hidden" name="page" value="$page" />
+	  </form>
+	  $_G['forum_tagscript']
+
+      <div class="pgs mtm mbm cl" style="padding:0px 10px;">
+        <!-- 分页条 -->
+        {$multipage}
+		<span class="pgb y"{if $_G['setting']['visitedforums']} id="visitedforumstmp" onmouseover="$('visitedforums').id = 'visitedforumstmp';this.id = 'visitedforums';showMenu({'ctrlid':this.id,'pos':'21'})"{/if}><a href="$upnavlink">{lang return_forumdisplay}</a></span>
+		<!--{if !$_G['forum_thread']['is_archived']}-->
+        <a id="newspecialtmp" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})"{if !$_G['forum']['allowspecialonly'] && empty($_G['forum']['picstyle']) && !$_G['forum']['threadsorts']['required']} onclick="showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=$_G[fid]')"{else} onclick="location.href='forum.php?mod=post&action=newthread&fid=$_G[fid]';return false;"{/if} href="javascript:;" title="{lang send_posts}" class="mwt-btn mwt-btn-primary" style="width:40px;">{lang send_posts}</a>
+		<!--{/if}-->
+		<!--{if $allowpostreply && !$_G['forum_thread']['archiveid']}-->
+        <a id="post_replytmp" onclick="showWindow('reply', 'forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]')" href="javascript:;" title="{lang reply}" class="mwt-btn mwt-btn-primary" style="width:40px;">{lang reply}</a>
+		<!--{/if}-->
+      </div>
+
+      <!--{hook/viewthread_middle}-->
+	  <!--[diy=diyfastposttop]--><div id="diyfastposttop" class="area"></div><!--[/diy]-->
+
+	  <!--{hook/viewthread_bottom}-->
+
+
+    </div>
+	  <!--{if $fastpost}-->
+	  <!--{subtemplate forum/viewthread_fastpost}-->
+	  <!--{/if}-->
+  </td>
+  <!-- 右侧 -->
+  <td style="vertical-align:top;width:250px;">
+    <!--站点公告-->
+	<div id="announcement-div"></div>
+    <!--发帖回帖-->
+    <div class="bm" style="padding:10px 20px;">
+		<!--{if !$_G['forum_thread']['is_archived']}-->
+        <a id="newspecialtmp" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})"{if !$_G['forum']['allowspecialonly'] && empty($_G['forum']['picstyle']) && !$_G['forum']['threadsorts']['required']} onclick="showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=$_G[fid]')"{else} onclick="location.href='forum.php?mod=post&action=newthread&fid=$_G[fid]';return false;"{/if} href="javascript:;" title="{lang send_posts}" class="mwt-btn mwt-btn-primary" 
+        style="width:{if $allowpostreply && !$_G['forum_thread']['archiveid']}70{else}180{/if}px;">{lang send_posts}</a>
+		<!--{/if}-->
+		<!--{if $allowpostreply && !$_G['forum_thread']['archiveid']}-->
+        <a id="post_replytmp" onclick="showWindow('reply', 'forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]')" href="javascript:;" title="{lang reply}" class="mwt-btn mwt-btn-primary" style="width:70px;margin-left:10px;">{lang reply}</a>
+		<!--{/if}-->
+        <!--{hook/viewthread_postbutton_top}-->    
+    </div>
+    <!--楼主信息-->
+    <div id="author_profile_div"></div>
+	<!--楼主最新帖子-->
+	<div id="author_threads_div"></div>
+    <!--{subtemplate common/sidefoot}-->
+  </td>
+  </table>
+</div>
+<script>
+jQuery(document).ready(function(){
+	require(["jsapp"],function(jsapp){
+		var params={
+			fid:'$_G[forum_thread][fid]',
+			tid:'$_G[forum_thread][tid]',
+			authorid: '$_G[forum_thread][authorid]'
+		};
+		jsapp.run('forum/viewthread',params);
+	});
+});
+</script>
+<!--{template common/footer}-->

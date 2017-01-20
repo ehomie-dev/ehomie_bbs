@@ -1,0 +1,10 @@
+<div id="subforum_{$_G[forum][fid]}" class="subforum">
+  <!--{loop $sublist $sub}-->
+	<a href="forum.php?mod=forumdisplay&fid={$sub[fid]}" {if !empty($sub[redirect])}target="_blank"{/if} style="{if !empty($sub[extra][namecolor])}color: {$sub[extra][namecolor]};{/if}">$sub[name]</a>
+    <!--{if $sub}-->
+	  <!--{hook/forumdisplay_subforum_extra $sub[fid]}-->
+    <!--{else}-->
+	  <!--{hook/forumdisplay_subforum_extra $sub[fid]}-->
+    <!--{/if}-->
+  <!--{/loop}-->
+</div>

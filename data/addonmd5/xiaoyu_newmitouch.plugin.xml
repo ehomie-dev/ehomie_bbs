@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[xiaoyu_newmitouch.plugin]]></item>
+	<item id="RevisionID"><![CDATA[55397]]></item>
+	<item id="SN"><![CDATA[2017011612wVQb13570q]]></item>
+	<item id="RevisionDateline"><![CDATA[1441868401]]></item>
+	<item id="Data">
+		<item id="/cert.php"><![CDATA[195338521382d9b22ad2bde457a70dcf]]></item>
+		<item id="/install.php"><![CDATA[fbe60cf34dd798ac93a8288509e268d3]]></item>
+		<item id="/uninstall.php"><![CDATA[4afd84376f6e1bfd6e13808bb2bdbf91]]></item>
+		<item id="/discuz_plugin_xiaoyu_newmitouch_TC_UTF8.xml"><![CDATA[de5c8ca57a8c532ad900ba804780dc90]]></item>
+		<item id="/discuz_plugin_xiaoyu_newmitouch_SC_GBK.xml"><![CDATA[789bffe2a2dc2e95e68c07c854279419]]></item>
+		<item id="/discuz_plugin_xiaoyu_newmitouch_TC_BIG5.xml"><![CDATA[9a6af5e3bfa0bcffc33e380e44967b42]]></item>
+		<item id="/discuz_plugin_xiaoyu_newmitouch_SC_UTF8.xml"><![CDATA[14aa5100e78f2fa3eff73b1b0cf0bfe9]]></item>
+		<item id="/core.inc.php"><![CDATA[aef2ac747b63abe08cdd86720ddcb45d]]></item>
+	</item>
+</root>

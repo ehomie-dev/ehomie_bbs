@@ -1,0 +1,14 @@
+<aside class="menu showMenu">
+<header>
+<div class="img">{avatar($_G[uid],big)}</div>
+<dl {if !$_G[uid]}class="notLogin"{/if}>
+<dt>{if $_G[uid]}{$_G[member][username]}{else}<a id="login" href="member.php?mod=logging&action=login">请先登陆</a>{/if}</dt>
+{if $_G[uid]}<dd id="logout"><a href="member.php?mod=logging&action=logout&formhash={FORMHASH}">{lang logout_mobile}</a></dd>{/if}
+</dl>
+</header>
+<div class="menu-container">
+<ul>
+<!--{template common/navlist}-->
+</ul>
+</div>
+</aside>
