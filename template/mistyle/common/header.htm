@@ -1,4 +1,5 @@
 <!--{subtemplate common/header_common}-->
+	<link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
 	<meta name="application-name" content="$_G['setting']['bbname']" />
 	<meta name="msapplication-tooltip" content="$_G['setting']['bbname']" />
 	<!--{if $_G['setting']['portalstatus']}--><meta name="msapplication-task" content="name=$_G['setting']['navs'][1]['navname'];action-uri={echo !empty($_G['setting']['domain']['app']['portal']) ? 'http://'.$_G['setting']['domain']['app']['portal'] : $_G[siteurl].'portal.php'};icon-uri={$_G[siteurl]}{IMGDIR}/portal.ico" /><!--{/if}-->
@@ -122,17 +123,17 @@
 			    <a href="{$_G['siteurl']}" class="logo" style="width:50px;"></a>
                 <span style="color: white; font-size: 14pt; vertical-align: -2px; margin-left: 10px;">纽约租房e站</span>
               </td>
-			  <td style="padding:0;position:relative;top:-15px">
+			  <td style="padding:0">
 			    <!-- menu -->
 				<!--{eval $mnid = getcurrentnav();}-->
-				<ul id="header_navmenu">
+				<ul id="header_navmenu" style='position: relative;top:-10px'>
 			    <!--{loop $_G['setting']['navs'] $nav}-->
 				  <!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}--><li {if $mnid == $nav[navid]}class="a" {/if}$nav[nav]></li><!--{/if}-->
 				<!--{/loop}-->
 				<!--{hook/global_nav_extra}-->
 				</ul>
 			  </td>
-			  <td style="padding:0;position:relative;top:-15px">
+			  <td style="padding:0">
 			    <!-- right nav -->
 				<div id="ucnav">
 			      <!--{subtemplate common/header_userstatus}-->
