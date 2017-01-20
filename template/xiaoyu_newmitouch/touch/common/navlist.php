@@ -9,7 +9,11 @@
 <span>频道</span>
 <div class="header_menu_list" style="display: none;">
 <h4>相关分类</h4>
-
+<ul>
+<!--{loop $xiaoyu_category $cat}--> 
+<li><a href="portal.php?mod=list&catid={$cat['catid']}&mobile=2">$cat['catname']</a></li> 
+<!--{/loop}-->
+</ul>
 </div>
 </li>
 <!--{/if}-->
