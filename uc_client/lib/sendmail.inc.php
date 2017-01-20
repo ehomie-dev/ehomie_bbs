@@ -37,7 +37,7 @@ if($mail_setting['mailsend'] == 1 && function_exists('mail')) {
 
 } elseif($mail_setting['mailsend'] == 2) {
 
-	if(!$fp = stream_socket_client($mail_setting['mailserver'], $mail_setting['mailport'], $errno, $errstr, 30)) {
+	if(!$fp = fsocketopen($mail_setting['mailserver'], $mail_setting['mailport'], $errno, $errstr, 30)) {
 		return false;
 	}
 
