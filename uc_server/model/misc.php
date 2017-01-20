@@ -92,7 +92,7 @@ class miscmodel {
 		}
 
 		$fpflag = 0;
-		if(!$fp = @fsocketopen(($ip ? $ip : $host), $port, $errno, $errstr, $timeout)) {
+		if(!$fp = stream_socket_client(($ip ? $ip : $host), $port, $errno, $errstr, $timeout)) {
 			$context = array(
 				'http' => array(
 					'method' => $post ? 'POST' : 'GET',
