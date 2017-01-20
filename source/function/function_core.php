@@ -187,7 +187,7 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 function fsocketopen($hostname, $port = 80, &$errno, &$errstr, $timeout = 15) {
 	$fp = '';
 	if(function_exists('fsockopen')) {
-		$fp = @fsockopen($hostname, $port, $errno, $errstr, $timeout);
+		$fp = stream_socket_client($hostname, $port, $errno, $errstr, $timeout);
 	} elseif(function_exists('pfsockopen')) {
 		$fp = @pfsockopen($hostname, $port, $errno, $errstr, $timeout);
 	} elseif(function_exists('stream_socket_client')) {
