@@ -22,7 +22,7 @@
     <div class="wrap_990"> 
      <a title="$_G[setting][bbname]" href="$nav" class="milogo"></a>
       <a href="http://www.discuz.net" class="link" target="_blank">Powered by Discuz! &nbsp;$_G['setting']['version']</a>
-     <span>&copy; Comsenz Inc.	$_G['setting']['sitename']<!--{if $_G['setting']['icp']}-->($_G['setting']['icp'])<!--{/if}-->
+     <span>&copy;	$_G['setting']['sitename']<!--{if $_G['setting']['icp']}-->($_G['setting']['icp'])<!--{/if}-->
     </div> 
    </div> 
   </div>
