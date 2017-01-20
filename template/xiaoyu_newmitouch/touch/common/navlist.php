@@ -1,7 +1,5 @@
 <?php exit;?>
-<li {if $_G[basescript]=='portal' && CURMODULE!='guide'}class="current"{/if}><a href="portal.php?mod=mobile&mobile=2"><i class="icon icon-home"></i>门户</a></li>
 <li {if $_G[basescript]=='forum' && CURMODULE!='guide'}class="current"{/if}><a href="forum.php?forumlist=1"><i class="icon icon-bbs"></i>论坛</a></li>
-<li {if CURMODULE=='guide'}class="current"{/if}><a href="forum.php?mod=guide"><i class="icon icon-fav"></i>导读</a></li>
 <!--{if $_G[basescript] !='portal'}-->
 <!--{eval require STYLEIMGDIR.'/index.php';}-->
 <!--{if $cat['catid'] > 0}-->
