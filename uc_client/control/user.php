@@ -61,7 +61,6 @@ class usercontrol extends base {
 	}
 
 	function onregister() {
-		global $_G;
 		$this->init_input();
 		$username = $this->input('username');
 		$password =  $this->input('password');
@@ -69,7 +68,7 @@ class usercontrol extends base {
 		$questionid = $this->input('questionid');
 		$answer = $this->input('answer');
 		$regip = $this->input('regip');
-		echo "<script>alert(". $_G['mobile'] .  ")</script>";
+		echo "<script>alert(". $email .  ")</script>";
 		if(($status = $this->_check_username($username)) < 0 && $_G['mobile'] != "") {
 			return $status;
 		}
@@ -254,7 +253,6 @@ class usercontrol extends base {
 	}
 
 	function _check_email($email, $username = '') {
-		echo "<script>alert('abc')</script>";
 		if(empty($this->settings)) {
 			$this->settings = $this->cache('settings');
 		}
