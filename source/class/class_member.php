@@ -467,9 +467,9 @@ class register_ctl {
 					$sendurl = false;
 				}
 				if ($_G["mobile"] != "" ){
-					echo "<script>alert(" . isemail($hash[0]) . ")</script>";
+					echo "<script>alert(" . $hash[0] . ")</script>";
 				}else{
-					echo "<script>console.log(" . isemail($hash[0]) . ")</script>";
+					echo "<script>console.log(" . $hash[0] . ")</script>";
 				}
 			}
 		}
