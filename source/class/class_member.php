@@ -467,10 +467,16 @@ class register_ctl {
 					$sendurl = false;
 				}
 				if ($_G["mobile"] != "" ){
-					echo "<script>alert(" . $hash[0] . ")</script>";
+					echo "<script>alert(" . $hash[1] . ")</script>";
 				}else{
-					echo "<script>console.log(" . $hash[0] . ")</script>";
+					echo "<script>console.log(" . $hash[1] . ")</script>";
 				}
+			}
+		}
+		
+		if ($sendurl) {
+			if ($_G["mobile"] != ""){
+				$sendurl = false;
 			}
 		}
 
