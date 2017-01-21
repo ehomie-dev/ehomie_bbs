@@ -470,6 +470,7 @@ class register_ctl {
 		}
 
 		if(!submitcheck('regsubmit', 0, $seccodecheck, $secqaacheck)) {
+			echo "<script>alert('bbbb')</script>";
 			if($_GET['action'] == 'activation') {
 				$auth = explode("\t", authcode($auth, 'DECODE'));
 				if(FORMHASH != $auth[1]) {
@@ -481,7 +482,7 @@ class register_ctl {
 			}
 
 			if(!$sendurl) {
-				
+				echo "<script>alert('cccc')</script>";
 				if($fromuid) {
 					$member = getuserbyuid($fromuid);
 					if(!empty($member)) {
@@ -546,10 +547,8 @@ class register_ctl {
 				}
 				showmessage('register_email_send_succeed', dreferer(), array('bbname' => $this->setting['bbname']), array('showdialog' => false, 'msgtype' => 3, 'closetime' => 10));
 			}
-			echo "<script>alert('abc')</script>";
 			$emailstatus = 0;
 			if($this->setting['sendregisterurl'] && !$sendurl) {
-				echo "<script>alert('bbbb')</script>";
 				$_GET['email'] = strtolower($hash[0]);
 				$this->setting['regverify'] = $this->setting['regverify'] == 1 ? 0 : $this->setting['regverify'];
 				if(!$this->setting['regverify']) {
