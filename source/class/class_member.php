@@ -504,14 +504,14 @@ class register_ctl {
 				$htmls = $settings = array();
 				foreach($_G['cache']['fields_register'] as $field) {
 					$fieldid = $field['fieldid'];
-					echo "<script>alert(" . $field['fieldid'] . ")</script>";
+					echo "<script>alert('abc')</script>";
 					$html = profile_setting($fieldid, array(), false, false, true);
 					if($html) {
 						$settings[$fieldid] = $_G['cache']['profilesetting'][$fieldid];
 						$htmls[$fieldid] = $html;
 					}
 				}
-
+				echo "<script>alert('abc')</script>";
 				$navtitle = $this->setting['reglinkname'];
 				
 
