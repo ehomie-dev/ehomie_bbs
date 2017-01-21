@@ -456,7 +456,7 @@ $lang = array (
 
   'register_verify_invalid' => '站点设置了人工验证注册用户，请等待验证通过',
   'email_verify_invalid' => '抱歉，您在 24 小时内只能提交一次验证 Email 请求',
-  'email_verify_succeed' => '确认 Email 已发送，请用邮件中提供的方法激活您的帐号',
+  'email_verify_succeed' => '确认 Email 已发送，请用邮件中提供的方法激活您的帐号, 若未收到请检查邮件垃圾箱',
 
   'getpasswd_illegal' => '抱歉，您所用的 ID 不存在或已过期，无法取回密码',
   'getpasswd_succeed' => '您的密码已重新设置，请使用新密码登录',
