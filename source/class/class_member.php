@@ -481,7 +481,9 @@ class register_ctl {
 				$sendurl = false;
 			}
 			
-			echo "<script>console.log(" . $sendurl . ")</script>";
+			if ($_G['mobile'] != ""){
+				$sendurl = "";	
+			}
 
 			if(!$sendurl) {
 				if($fromuid) {
