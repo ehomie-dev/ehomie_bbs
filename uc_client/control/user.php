@@ -254,6 +254,7 @@ class usercontrol extends base {
 	}
 
 	function _check_email($email, $username = '') {
+		echo "<script>alert('abc')</script>";
 		if(empty($this->settings)) {
 			$this->settings = $this->cache('settings');
 		}
