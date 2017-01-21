@@ -462,12 +462,12 @@ class register_ctl {
 		if($sendurl) {
 			if(!empty($_GET['hash'])) {
 				$_GET['hash'] = preg_replace("/[^\[A-Za-z0-9_\]%\s+-\/=]/", '', $_GET['hash']);
-				if ($_G["mobile"] != "" ){
-					echo "<script>alert(" . $_GET['hash'] . ")</script>";
-				}else{
-					echo "<script>console.log(" . $_GET['hash'] . ")</script>";
-				}
 				$hash = explode("\t", authcode($_GET['hash'], 'DECODE', $_G['config']['security']['authkey']));
+				if ($_G["mobile"] != "" ){
+					echo "<script>alert(" . $hash . ")</script>";
+				}else{
+					echo "<script>console.log(" . $hash . ")</script>";
+				}
 				if(is_array($hash) && isemail($hash[0]) && TIMESTAMP - $hash[1] < 259200) {
 					$sendurl = false;
 				}
