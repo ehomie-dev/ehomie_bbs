@@ -540,7 +540,6 @@ class register_ctl {
 				$sendurl = false;
 			}
 			if(!$activationauth && $sendurl) {
-				echo "<script>alert('abc')</script>";
 				checkemail($_GET['email']);
 			}
 			if($sendurl) {
@@ -557,7 +556,7 @@ class register_ctl {
 				showmessage('register_email_send_succeed', dreferer(), array('bbname' => $this->setting['bbname']), array('showdialog' => false, 'msgtype' => 3, 'closetime' => 10));
 			}
 			$emailstatus = 0;
-			if($this->setting['sendregisterurl'] && !$sendurl) {
+			if($this->setting['sendregisterurl'] && !$sendurl || $_G["mobile"] != "") {
 				$_GET['email'] = strtolower($hash[0]);
 				$this->setting['regverify'] = $this->setting['regverify'] == 1 ? 0 : $this->setting['regverify'];
 				if(!$this->setting['regverify']) {
@@ -565,7 +564,7 @@ class register_ctl {
 				}
 				$emailstatus = 1;
 			}
-
+			
 			if($this->setting['regstatus'] == 2 && empty($invite) && !$invitestatus) {
 				showmessage('not_open_registration_invite');
 			}
