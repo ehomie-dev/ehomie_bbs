@@ -499,7 +499,7 @@ class register_ctl {
 				}
 
 				$username = dhtmlspecialchars($username);
-
+				echo "<script>alert(" . $username .")</script>";
 				$htmls = $settings = array();
 				foreach($_G['cache']['fields_register'] as $field) {
 					$fieldid = $field['fieldid'];
@@ -511,7 +511,7 @@ class register_ctl {
 				}
 
 				$navtitle = $this->setting['reglinkname'];
-				echo "<script>alert(" . $navtitle .")</script>";
+				
 
 				if($this->extrafile && file_exists($this->extrafile)) {
 					require_once $this->extrafile;
