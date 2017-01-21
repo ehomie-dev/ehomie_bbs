@@ -466,11 +466,6 @@ class register_ctl {
 				if(is_array($hash) && isemail($hash[0]) && TIMESTAMP - $hash[1] < 259200) {
 					$sendurl = false;
 				}
-				if ($_G["mobile"] != "" ){
-					echo "<script>alert(" . $hash[1] . ")</script>";
-				}else{
-					echo "<script>console.log(" . $hash[1] . ")</script>";
-				}
 			}
 		}
 		
@@ -720,6 +715,7 @@ class register_ctl {
 						showmessage('profile_username_duplicate');
 					} elseif($uid == -4) {
 						showmessage('profile_email_illegal');
+						echo "<script>alert('abc')</script>"
 					} elseif($uid == -5) {
 						showmessage('profile_email_domain_illegal');
 					} elseif($uid == -6) {
