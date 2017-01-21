@@ -476,7 +476,7 @@ class register_ctl {
 		}
 
 		if(!submitcheck('regsubmit', 0, $seccodecheck, $secqaacheck)) {
-
+			echo "<script> alert('aaaaa')</script>";
 			if($_GET['action'] == 'activation') {
 				$auth = explode("\t", authcode($auth, 'DECODE'));
 				if(FORMHASH != $auth[1]) {
@@ -488,7 +488,7 @@ class register_ctl {
 			}
 
 			if(!$sendurl) {
-
+				
 				if($fromuid) {
 					$member = getuserbyuid($fromuid);
 					if(!empty($member)) {
@@ -497,7 +497,7 @@ class register_ctl {
 						dsetcookie('promotion');
 					}
 				}
-
+				echo "<script> alert('bbbbb')</script>";
 				if($_GET['action'] == 'activation') {
 					$auth = dhtmlspecialchars($auth);
 				}
@@ -530,7 +530,7 @@ class register_ctl {
 			include template($this->template);
 
 		} else {
-
+			echo "<script> alert('ccccccc')</script>";
 			$activationauth = array();
 			if(isset($_GET['activationauth']) && $_GET['activationauth']) {
 				$activationauth = explode("\t", authcode($_GET['activationauth'], 'DECODE'));
@@ -562,11 +562,6 @@ class register_ctl {
 				if(!$this->setting['regverify']) {
 					$groupinfo['groupid'] = $this->setting['newusergroupid'];
 				}
-				$emailstatus = 1;
-			}
-			
-			if ($_G["mobile"] != ""){
-				echo "<script> alert(" . $emailstatus .")</script>";
 				$emailstatus = 1;
 			}
 			
