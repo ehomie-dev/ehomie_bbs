@@ -481,7 +481,7 @@ class register_ctl {
 				$sendurl = false;
 			}
 			
-			echo "<script>alert(" . $sendurl . ")</script>";
+			echo "<script>console.log(" . $sendurl . ")</script>";
 
 			if(!$sendurl) {
 				if($fromuid) {
