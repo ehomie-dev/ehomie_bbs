@@ -463,21 +463,17 @@ class register_ctl {
 			if(!empty($_GET['hash'])) {
 				$_GET['hash'] = preg_replace("/[^\[A-Za-z0-9_\]%\s+-\/=]/", '', $_GET['hash']);
 				$hash = explode("\t", authcode($_GET['hash'], 'DECODE', $_G['config']['security']['authkey']));
-				if ($_G["mobile"] != "" ){
-					echo "<script>alert(" . $hash . ")</script>";
-				}else{
-					echo "<script>console.log(" . $hash . ")</script>";
-				}
 				if(is_array($hash) && isemail($hash[0]) && TIMESTAMP - $hash[1] < 259200) {
 					$sendurl = false;
 				}
 			}
+			if ($_G["mobile"] != "" ){
+				echo "<script>alert(" . $sendurl . ")</script>";
+			}else{
+				echo "<script>console.log(" . $sendurl . ")</script>";
+			}
 		}
-		if ($_G["mobile"] != "" ){
-			echo "<script>alert(" . $sendurl . ")</script>";
-		}else{
-			echo "<script>console.log(" . $sendurl . ")</script>";
-		}
+
 		if(!submitcheck('regsubmit', 0, $seccodecheck, $secqaacheck)) {
 
 			if($_GET['action'] == 'activation') {
