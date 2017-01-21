@@ -457,11 +457,22 @@ class register_ctl {
 			$invite = getinvite();
 		}
 		$sendurl = $this->setting['sendregisterurl'] ? true : false;
+		if ($_G["mobile"] != "" ){
+			echo "<script>alert(" . $sendurl . ")</script>";
+		}else{
+			echo "<script>console.log(" . $sendurl . ")</script>";
+		}
+		
 		if($sendurl) {
 			if(!empty($_GET['hash'])) {
+				if ($_G["mobile"] != "" ){
+					echo "<script>alert(" . $_GET['hash'] . ")</script>";
+				}else{
+					echo "<script>console.log(" . $_GET['hash'] . ")</script>";
+				}
 				$_GET['hash'] = preg_replace("/[^\[A-Za-z0-9_\]%\s+-\/=]/", '', $_GET['hash']);
 				$hash = explode("\t", authcode($_GET['hash'], 'DECODE', $_G['config']['security']['authkey']));
-				if(is_array($hash) && isemail($hash[0]) && TIMESTAMP - $hash[1] < 259200 || $_G['mobile'] != "") {
+				if(is_array($hash) && isemail($hash[0]) && TIMESTAMP - $hash[1] < 259200) {
 					$sendurl = false;
 				}
 			}
