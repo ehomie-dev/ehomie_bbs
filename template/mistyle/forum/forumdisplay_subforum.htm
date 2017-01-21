@@ -1,4 +1,4 @@
-<div id="subforum_{$_G[forum][fid]}" class="subforum">
+<div id="subforum_{$_G[forum][fid]}" class="subforum" style='overflow-y:auto;max-height:200px'>
   <!--{loop $sublist $sub}-->
 	<a href="forum.php?mod=forumdisplay&fid={$sub[fid]}" {if !empty($sub[redirect])}target="_blank"{/if} style="{if !empty($sub[extra][namecolor])}color: {$sub[extra][namecolor]};{/if}">$sub[name]</a>
     <!--{if $sub}-->
