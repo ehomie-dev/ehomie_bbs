@@ -540,6 +540,7 @@ class register_ctl {
 				$sendurl = false;
 			}
 			if(!$activationauth && $sendurl) {
+				echo "<script>alert('abc')</script>";
 				checkemail($_GET['email']);
 			}
 			if($sendurl) {
@@ -706,7 +707,6 @@ class register_ctl {
 
 			if(!$activation) {
 				$uid = uc_user_register(addslashes($username), $password, $email, $questionid, $answer, $_G['clientip']);
-				echo "<script>alert(" . $uid .")</script>";
 				if($uid <= 0) {
 					if($uid == -1) {
 						showmessage('profile_username_illegal');
@@ -716,7 +716,6 @@ class register_ctl {
 						showmessage('profile_username_duplicate');
 					} elseif($uid == -4) {
 						showmessage('profile_email_illegal');
-						echo "<script>alert('abc')</script>";
 					} elseif($uid == -5) {
 						showmessage('profile_email_domain_illegal');
 					} elseif($uid == -6) {
