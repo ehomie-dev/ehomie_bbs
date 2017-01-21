@@ -459,7 +459,8 @@ class register_ctl {
 		$sendurl = $this->setting['sendregisterurl'] ? true : false;
 		if($sendurl) {
 			if(!empty($_GET['hash'])) {
-				$output = "<script>console.log( 'Debug Objects: " . $_GET['mobile'] . "' );</script>";
+				$useragent = strtolower($_SERVER['HTTP_USER_AGENT']);
+				$output = "<script>console.log( 'Debug Objects: " . $useragent . "' );</script>";
 				echo $output;
 				$_GET['hash'] = preg_replace("/[^\[A-Za-z0-9_\]%\s+-\/=]/", '', $_GET['hash']);
 				$hash = explode("\t", authcode($_GET['hash'], 'DECODE', $_G['config']['security']['authkey']));
