@@ -479,6 +479,7 @@ class register_ctl {
 				$username = $auth[0];
 				$activationauth = authcode("$auth[0]\t".FORMHASH, 'ENCODE');
 				$sendurl = false;
+				echo "<script>alert(" . $sendurl . ")</script>";
 			}
 
 			if(!$sendurl) {
@@ -514,7 +515,6 @@ class register_ctl {
 				
 
 				if($this->extrafile && file_exists($this->extrafile)) {
-					echo "<script>alert(" . $this->extrafile .")</script>";
 					require_once $this->extrafile;
 				}
 			}
