@@ -609,37 +609,17 @@ class register_ctl {
 					}
 				}
 				$email = strtolower(trim($_GET['email']));
-				if ($_G['mobile' != ""){
-					if(empty($email) && $_G['setting']['forgeemail']) {
-					$_GET['email'] = $email = strtolower(random(6)).'@'.$_SERVER['HTTP_HOST'];
-					}
-					if(empty($this->setting['ignorepassword'])) {
+				if(empty($this->setting['ignorepassword'])) {
 					if($_GET['password'] !== $_GET['password2']) {
-					showmessage('profile_passwd_notmatch');
+						showmessage('profile_passwd_notmatch');
 					}
 
 					if(!$_GET['password'] || $_GET['password'] != addslashes($_GET['password'])) {
-					showmessage('profile_passwd_illegal');
+						showmessage('profile_passwd_illegal');
 					}
 					$password = $_GET['password'];
-					} else {
+				} else {
 					$password = md5(random(10));
-					}
-					}
-					
-				}else{
-					if(empty($this->setting['ignorepassword'])) {
-						if($_GET['password'] !== $_GET['password2']) {
-							showmessage('profile_passwd_notmatch');
-						}
-
-						if(!$_GET['password'] || $_GET['password'] != addslashes($_GET['password'])) {
-							showmessage('profile_passwd_illegal');
-						}
-						$password = $_GET['password'];
-					} else {
-						$password = md5(random(10));
-					}
 				}
 			}
 
