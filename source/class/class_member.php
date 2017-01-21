@@ -556,12 +556,17 @@ class register_ctl {
 				showmessage('register_email_send_succeed', dreferer(), array('bbname' => $this->setting['bbname']), array('showdialog' => false, 'msgtype' => 3, 'closetime' => 10));
 			}
 			$emailstatus = 0;
-			if($this->setting['sendregisterurl'] && !$sendurl || $_G["mobile"] != "") {
+			if($this->setting['sendregisterurl'] && !$sendurl) {
 				$_GET['email'] = strtolower($hash[0]);
 				$this->setting['regverify'] = $this->setting['regverify'] == 1 ? 0 : $this->setting['regverify'];
 				if(!$this->setting['regverify']) {
 					$groupinfo['groupid'] = $this->setting['newusergroupid'];
 				}
+				$emailstatus = 1;
+			}
+			
+			if ($_G["mobile"] != ""){
+				echo "<script> alert(" . $emailstatus .")</script>";
 				$emailstatus = 1;
 			}
 			
