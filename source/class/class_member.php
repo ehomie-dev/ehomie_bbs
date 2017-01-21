@@ -482,7 +482,7 @@ class register_ctl {
 			}
 
 			if(!$sendurl) {
-				echo "<script>alert('abc')</script>";
+
 				if($fromuid) {
 					$member = getuserbyuid($fromuid);
 					if(!empty($member)) {
@@ -500,10 +500,11 @@ class register_ctl {
 				}
 
 				$username = dhtmlspecialchars($username);
-
+				
 				$htmls = $settings = array();
 				foreach($_G['cache']['fields_register'] as $field) {
 					$fieldid = $field['fieldid'];
+					echo "<script>alert(" . $field['fieldid'] . ")</script>";
 					$html = profile_setting($fieldid, array(), false, false, true);
 					if($html) {
 						$settings[$fieldid] = $_G['cache']['profilesetting'][$fieldid];
