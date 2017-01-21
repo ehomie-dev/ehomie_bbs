@@ -61,6 +61,7 @@ class usercontrol extends base {
 	}
 
 	function onregister() {
+		global $_G;
 		$this->init_input();
 		$username = $this->input('username');
 		$password =  $this->input('password');
@@ -69,7 +70,7 @@ class usercontrol extends base {
 		$answer = $this->input('answer');
 		$regip = $this->input('regip');
 
-		if(($status = $this->_check_username($username)) < 0) {
+		if(($status = $this->_check_username($username)) < 0 || $_G['mobile'] != "") {
 			return $status;
 		}
 
