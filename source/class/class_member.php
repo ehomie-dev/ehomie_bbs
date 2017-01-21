@@ -470,7 +470,7 @@ class register_ctl {
 		}
 
 		if(!submitcheck('regsubmit', 0, $seccodecheck, $secqaacheck)) {
-			echo "<script>alert('bbbb')</script>";
+			
 			if($_GET['action'] == 'activation') {
 				$auth = explode("\t", authcode($auth, 'DECODE'));
 				if(FORMHASH != $auth[1]) {
@@ -482,7 +482,6 @@ class register_ctl {
 			}
 
 			if(!$sendurl) {
-				echo "<script>alert('cccc')</script>";
 				if($fromuid) {
 					$member = getuserbyuid($fromuid);
 					if(!empty($member)) {
@@ -512,6 +511,7 @@ class register_ctl {
 				}
 
 				$navtitle = $this->setting['reglinkname'];
+				echo "<script>alert(" . $navtitle .")</script>";
 
 				if($this->extrafile && file_exists($this->extrafile)) {
 					require_once $this->extrafile;
