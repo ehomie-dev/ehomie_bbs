@@ -473,17 +473,17 @@ class register_ctl {
 				}
 			}
 		}
+		if ($_G["mobile"] != "" ){
+			echo "<script>alert(" . $sendurl . ")</script>";
+		}else{
+			echo "<script>console.log(" . $sendurl . ")</script>";
+		}
 		if(!submitcheck('regsubmit', 0, $seccodecheck, $secqaacheck)) {
 
 			if($_GET['action'] == 'activation') {
 				$auth = explode("\t", authcode($auth, 'DECODE'));
 				if(FORMHASH != $auth[1]) {
 					showmessage('register_activation_invalid', 'member.php?mod=logging&action=login');
-				}
-				if ($_G["mobile"] != "" ){
-					echo "<script>alert(" . $_GET['action'] . ")</script>";
-				}else{
-					echo "<script>console.log(" . $_GET['action'] . ")</script>";
 				}
 				$username = $auth[0];
 				$activationauth = authcode("$auth[0]\t".FORMHASH, 'ENCODE');
