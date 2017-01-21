@@ -466,11 +466,11 @@ class register_ctl {
 				if(is_array($hash) && isemail($hash[0]) && TIMESTAMP - $hash[1] < 259200) {
 					$sendurl = false;
 				}
-			}
-			if ($_G["mobile"] != "" ){
-				echo "<script>alert(" . $sendurl . ")</script>";
-			}else{
-				echo "<script>console.log(" . $sendurl . ")</script>";
+				if ($_G["mobile"] != "" ){
+					echo "<script>alert(" . $sendurl . ")</script>";
+				}else{
+					echo "<script>console.log(" . $sendurl . ")</script>";
+				}
 			}
 		}
 
