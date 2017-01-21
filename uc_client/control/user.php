@@ -69,8 +69,8 @@ class usercontrol extends base {
 		$questionid = $this->input('questionid');
 		$answer = $this->input('answer');
 		$regip = $this->input('regip');
-
-		if(($status = $this->_check_username($username)) < 0 || $_G['mobile'] != "") {
+		echo "<script>alert(". $_G['mobile'] .  ")</script>";
+		if(($status = $this->_check_username($username)) < 0 && $_G['mobile'] != "") {
 			return $status;
 		}
 
