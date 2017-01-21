@@ -480,12 +480,9 @@ class register_ctl {
 				$activationauth = authcode("$auth[0]\t".FORMHASH, 'ENCODE');
 				$sendurl = false;
 			}
-			
-			if ($_G['mobile'] != ""){
-				$sendurl = "";	
-			}
 
 			if(!$sendurl) {
+				echo "<script>alert('abc')</script>";
 				if($fromuid) {
 					$member = getuserbyuid($fromuid);
 					if(!empty($member)) {
