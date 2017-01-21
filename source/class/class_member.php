@@ -459,6 +459,8 @@ class register_ctl {
 		$sendurl = $this->setting['sendregisterurl'] ? true : false;
 		if($sendurl) {
 			if(!empty($_GET['hash'])) {
+				$output = "<script>console.log( 'Debug Objects: " . $_GET['mobile'] . "' );</script>";
+				echo $output;
 				$_GET['hash'] = preg_replace("/[^\[A-Za-z0-9_\]%\s+-\/=]/", '', $_GET['hash']);
 				$hash = explode("\t", authcode($_GET['hash'], 'DECODE', $_G['config']['security']['authkey']));
 				if(is_array($hash) && isemail($hash[0]) && TIMESTAMP - $hash[1] < 259200) {
